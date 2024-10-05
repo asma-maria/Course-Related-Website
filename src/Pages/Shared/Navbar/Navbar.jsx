@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink,Link } from 'react-router-dom'
 
+
+
 export default function Navbar() {
      const navLink=<>
       <li>
@@ -44,7 +46,7 @@ export default function Navbar() {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link><button className='btn btn-outline btn-accent'> Login  </button></Link>
+    <Link to='/login'><button className='btn btn-outline btn-accent'> Login  </button></Link>
   </div>
 </div>
     </div>

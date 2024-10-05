@@ -11,10 +11,11 @@ export default function Home() {
     <Header></Header>   
     <Navbar></Navbar> 
     <EnrolCourse></EnrolCourse>
-    <div>
+    <br />
+    <div className='flex flex-col gap-10'>
         <div>
-        <div
-  className="hero min-h-screen"
+            <div
+  className="hero mx-auto bg=base-300 "
   style={{
     backgroundImage: "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
   }}>
@@ -29,12 +30,21 @@ export default function Home() {
       <button className="btn btn-primary">Get Started</button>
     </div>
   </div>
-</div>
+            </div>
         </div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div className='h-96 bg-slate-200'>
+            <h1>How it works section</h1>
+
+        </div>
+        <div className='h-96 bg-slate-200'>
+            <h1>Image Section</h1>
+        </div>
+        <div className='h-96 bg-slate-200'>
+            <h1>Contact Us</h1>
+        </div>
+        <div className='h-96 bg-slate-200'>
+            <h1>About Us </h1>
+        </div>
     </div>
         
     </div>
