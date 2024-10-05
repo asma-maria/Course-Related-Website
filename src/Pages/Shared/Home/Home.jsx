@@ -1,14 +1,12 @@
 
 import { EnrolCourse } from '../EnrolCourse'
-import Header from '../Header.jsx/Header'
+
 import Navbar from '../Navbar/Navbar'
 
 export default function Home() {
   return (
     <div>
-
-    
-    <Header></Header>   
+ 
     <Navbar></Navbar> 
     <EnrolCourse></EnrolCourse>
     <br />

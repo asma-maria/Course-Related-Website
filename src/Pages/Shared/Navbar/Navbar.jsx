@@ -1,9 +1,22 @@
-import React from 'react'
-import { NavLink,Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { NavLink,Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../../Provider/AuthProvider'
 
 
 
 export default function Navbar() {
+
+      const {user,logOut }=useContext(AuthContext); 
+      const navigate=useNavigate();
+      const handleSignOut=()=>{
+        logOut()
+        .then((result)=>{
+         navigate("/login");
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
+      }
      const navLink=<>
       <li>
         <NavLink to='/'>Home </NavLink>
@@ -45,9 +58,19 @@ export default function Navbar() {
       {navLink}
     </ul>
   </div>
-  <div className="navbar-end">
-    <Link to='/login'><button className='btn btn-outline btn-accent'> Login  </button></Link>
-  </div>
+{
+  user ?  ( <div className="navbar-end">
+    <span>{user.email}</span>
+  <Link to='/login'><button 
+  onClick={handleSignOut}
+  className='btn btn-outline btn-accent'> LogOut  
+  </button></Link>
+</div>)
+:
+(<div className="navbar-end">
+<Link to='/login'><button className='btn btn-outline btn-accent'> Login  </button></Link>
+</div>)
+}
 </div>
     </div>
   )

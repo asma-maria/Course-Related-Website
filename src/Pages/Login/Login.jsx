@@ -1,9 +1,35 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from "../Shared/Navbar/Navbar";
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
+import toast from 'react-hot-toast';
 
 
 export const Login = () => {
+    const {signIn}=useContext(AuthContext);
+    const navigate=useNavigate();
+    const handleLogin=(event)=>{
+        event.preventDefault();
+        const form = new FormData(event.currentTarget);
+        console.log(form);
+    
+        const email = form.get("email");
+        const password = form.get("password");
+        console.log(email, password);
+    
+        signIn(email, password)
+          .then((result) => {
+            console.log(result.user);
+            toast.success("User Login Successful", {
+              position: "top-right",
+            });
+            navigate( "/");
+          })
+          .catch((error) => {
+           console.log(error);
+          });
+    
+    };
   return (
     <div>
        <Navbar></Navbar>
@@ -13,7 +39,7 @@ export const Login = () => {
             <div className="flex h-full flex-col justify-center gap-4 p-6">
               <div className="left-0 right-0 inline-block border-gray-200 px-2 py-2.5 sm:px-4">
                 <form
-                 
+                  onSubmit={handleLogin}
                   className="flex flex-col gap-4 pb-4"
                 >
                   <h1 className="mb-4 text-2xl font-bold dark:text-white text-center">

@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {Link} from 'react-router-dom'
 import Navbar from '../Shared/Navbar/Navbar'
+import { AuthContext } from '../../Provider/AuthProvider'
 
 
 export const Register = () => {
+    //for email,password creation 
+    const { createUser }=useContext(AuthContext);
+    const handleRegister=(event)=>{
+        event.preventDefault();
+        const form = new FormData(event.currentTarget);
+        console.log(form);
+
+        const name=form.get('name')
+        const email=form.get('email')
+        const password=form.get('password')
+        console.log(name,email,password)
+
+        createUser(email,password)
+        .then(result=>{
+            console.log(result.user);
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+    };
   return (
     <div>
         <Navbar></Navbar>
@@ -14,7 +35,7 @@ export const Register = () => {
             <div className="flex h-full flex-col justify-center gap-4 p-6">
               <div className="left-0 right-0 inline-block border-gray-200 px-2 py-2.5 sm:px-4">
                 <form
-                
+                  onSubmit={handleRegister}
                   className="flex flex-col gap-4 pb-4"
                 >
                   <h1 className="mb-4 text-2xl font-bold dark:text-white text-center">
