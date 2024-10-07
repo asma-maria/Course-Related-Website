@@ -3,10 +3,10 @@ import Marquee from 'react-fast-marquee'
 
 export const EnrolCourse = () => {
   return (
-    <div className='flex'>
-        <button className='btn btn-secondary' > Log in </button>
+    <div className='flex text-sm text-red-950 font-popppins bg-cyan-400'>
+
         <Marquee pauseOnHover={true}>
-        To Enroll plz log in
+        Please Register/Login to see the details of the courses of <span className='text-xl '> Tech Hub</span> 
         </Marquee>
     </div>
   )

@@ -2,20 +2,26 @@
 import { EnrolCourse } from '../EnrolCourse'
 
 import Navbar from '../Navbar/Navbar'
+import HowWorks from './HowWorks'
+import { CourseImage } from './CourseImage'
+import ContactUs from './ContactUs'
+import AboutUs from './AboutUs'
+import Footer from './Footer'
+
 
 export default function Home() {
   return (
-    <div>
+    <div className='mx-auto container'>
  
     <Navbar></Navbar> 
     <EnrolCourse></EnrolCourse>
-    <br />
-    <div className='flex flex-col gap-10'>
+   
+    <div className='flex flex-col gap-6'>
         <div>
             <div
   className="hero mx-auto bg=base-300 "
   style={{
-    backgroundImage: "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+    backgroundImage: "url(https://plus.unsplash.com/premium_photo-1678565869434-c81195861939?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2ViJTIwZGV2ZWxvcGVyfGVufDB8fDB8fHww)",
   }}>
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-neutral-content text-center">
@@ -28,20 +34,24 @@ export default function Home() {
       <button className="btn btn-primary">Get Started</button>
     </div>
   </div>
-            </div>
-        </div>
-        <div className='h-96 bg-slate-200'>
-            <h1>How it works section</h1>
+  </div>
+  </div>
+        <div >
+           <HowWorks></HowWorks>
 
         </div>
-        <div className='h-96 bg-slate-200'>
-            <h1>Image Section</h1>
+        <div >
+            <CourseImage> </CourseImage>
         </div>
-        <div className='h-96 bg-slate-200'>
-            <h1>Contact Us</h1>
+        <div >
+            <ContactUs></ContactUs>
         </div>
-        <div className='h-96 bg-slate-200'>
-            <h1>About Us </h1>
+        <div >
+            <AboutUs></AboutUs>
+        </div>
+
+        <div>
+          <Footer></Footer>
         </div>
     </div>
         

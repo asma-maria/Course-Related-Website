@@ -3,6 +3,10 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Shared/Home/Home";
 import { Login } from "../Pages/Login/Login";
 import {Register} from "../Pages/Register/Register";
+import { Courses } from "../Pages/Shared/Home/Courses";
+import { CourseDetails } from "../Pages/Shared/Home/CourseDetails";
+import { PrivateRoute } from "./PrivateRoute";
+
 
 
   
@@ -23,11 +27,20 @@ import {Register} from "../Pages/Register/Register";
         {
             path:"/register",
             element:<Register></Register>
-        }
-
-
-       
-
+        },
+        {
+          path:"/courses",
+          element:<PrivateRoute>
+            <Courses></Courses>
+          </PrivateRoute>,
+          loader:()=> fetch(`http://localhost:5000/courses`)
+        },
+        {
+          path:"/courses/:id",
+          element:<CourseDetails></CourseDetails>,
+          loader:({params})=>
+            fetch(`http://localhost:5000/courses/${params.id}`),
+        },
       ],
 
     },

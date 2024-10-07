@@ -3,10 +3,13 @@ import Navbar from "../Shared/Navbar/Navbar";
 import {Link, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import toast from 'react-hot-toast';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 
 export const Login = () => {
-    const {signIn}=useContext(AuthContext);
+    const {signIn,googleSignIn,githubSignIn}=useContext(AuthContext);
+    const googleProvider=new GoogleAuthProvider();
+    const githubProvider=new GithubAuthProvider();
     const navigate=useNavigate();
     const handleLogin=(event)=>{
         event.preventDefault();
@@ -30,6 +33,38 @@ export const Login = () => {
           });
     
     };
+
+    const handleGoogleSignin=()=>{
+        googleSignIn(googleProvider)
+        .then((result) => {
+          console.log(result.user);
+          toast.success("User Google Login Successful", {
+            position: "top-right",
+          });
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+        
+    };
+    const handleGitHubSignin=()=>{
+        githubSignIn(githubProvider)
+        .then((result) => {
+          console.log(result.user);
+          toast.success("User GitHub Login Successful", {
+            position: "top-right",
+          });
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+        
+    };
+
+
+
   return (
     <div>
        <Navbar></Navbar>
@@ -108,7 +143,7 @@ export const Login = () => {
                     </button>
 
                     <button
-                      
+                      onClick={handleGoogleSignin}
                       type="button"
                       className="btn btn-outline btn-error mt-2 rounded-none"
                     >
@@ -118,7 +153,7 @@ export const Login = () => {
                     </button>
 
                     <button
-                     
+                     onClick={handleGitHubSignin}
                       type="button"
                       className="btn btn-outline mt-2 rounded-none"
                     >

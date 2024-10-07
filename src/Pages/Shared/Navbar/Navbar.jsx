@@ -1,34 +1,36 @@
 import React, { useContext } from 'react'
 import { NavLink,Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../Provider/AuthProvider'
+import userPic from "../../../assets/user.png";
+import image from "../Navbar/download.jpg"
 
 
 
 export default function Navbar() {
 
-      const {user,logOut }=useContext(AuthContext); 
-      const navigate=useNavigate();
-      const handleSignOut=()=>{
+  const { user, logOut} = useContext(AuthContext);
+  const navigate = useNavigate();
+      const handleSignOut = () => {
         logOut()
-        .then((result)=>{
-         navigate("/login");
-        })
-        .catch((error)=>{
-          console.log(error);
-        })
-      }
+          .then(() => {
+            navigate("/login");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
      const navLink=<>
       <li>
         <NavLink to='/'>Home </NavLink>
     </li>
     <li>
-        <NavLink to='/products'>Products </NavLink>
+        <NavLink to='/courses'>Courses</NavLink>
     </li>
      
      </>
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 shadow-lg p-4">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -51,27 +53,42 @@ export default function Navbar() {
         {navLink}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">Tech Hub Tutorial </a>
+    <img src={image} alt="Logo" className="h-12 w-12 rounded-lg"></img>
+    <a className="btn btn-ghost text-xl">Tech Hub </a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
       {navLink}
     </ul>
   </div>
-{
-  user ?  ( <div className="navbar-end">
-    <span>{user.email}</span>
-  <Link to='/login'><button 
-  onClick={handleSignOut}
-  className='btn btn-outline btn-accent'> LogOut  
-  </button></Link>
-</div>)
-:
-(<div className="navbar-end">
-<Link to='/login'><button className='btn btn-outline btn-accent'> Login  </button></Link>
-</div>)
-}
-</div>
+  <div className="navbar-end">
+        
+        <div
+          tabIndex={0}
+          role="button"
+          className="btn btn-ghost btn-circle avatar mr-3"
+        >
+          <div className="w-10 rounded-full">
+          <img alt="User" src={userPic} />
+          </div>
+        </div>
+
+        {user ? (
+          <button
+            onClick={handleSignOut}
+            className="btn btn-sm btn-outline btn-success text-md rounded-none"
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-sm btn-info text-md rounded-md">
+              Login/SignUp
+            </button>
+          </Link>
+        )}
+      </div>
+     </div>
     </div>
   )
 }

@@ -1,35 +1,56 @@
 import React, { useContext } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import Navbar from '../Shared/Navbar/Navbar'
 import { AuthContext } from '../../Provider/AuthProvider'
+import toast from 'react-hot-toast'
 
 
 export const Register = () => {
     //for email,password creation 
-    const { createUser }=useContext(AuthContext);
+    
+    const { createUser,updateUserProfile }=useContext(AuthContext);
+    const navigate=useNavigate();
     const handleRegister=(event)=>{
         event.preventDefault();
+       
         const form = new FormData(event.currentTarget);
         console.log(form);
 
+        
         const name=form.get('name')
+        const photo=form.get('photo')
         const email=form.get('email')
         const password=form.get('password')
-        console.log(name,email,password)
+        console.log(name,photo,email,password)
 
         createUser(email,password)
         .then(result=>{
             console.log(result.user);
+            handleUserProfile(name,photo);
+            toast.success("User Registration Successful", {
+                position: "top-right",
+              });
+              navigate("/login")
         })
         .catch(error=>{
             console.log(error);
         })
     };
+    const handleUserProfile=(name,photo)=>{
+        const profile={displayName: name,photoURL:photo};
+
+        updateUserProfile(profile).then(()=>{})
+        .catch((error)=>{
+            console.log(error);
+        })
+
+        
+    }
   return (
     <div>
         <Navbar></Navbar>
 
-      <div className="py-8">
+        <div className="py-8">
         <div className="flex h-full items-center justify-center">
           <div className="rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-900 flex-col flex h-full items-center justify-center sm:px-4">
             <div className="flex h-full flex-col justify-center gap-4 p-6">
@@ -65,7 +86,29 @@ export const Register = () => {
                       </div>
                     </div>
                   </div>
-               
+                  <div>
+                    <div className="mb-2">
+                      <label
+                        className="text-sm font-medium text-gray-900 dark:text-gray-300"
+                        htmlFor="photo"
+                      >
+                        Photo URL
+                      </label>
+                    </div>
+                    <div className="flex w-full rounded-lg pt-1">
+                      <div className="relative w-full">
+                        <input
+                          className="block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 p-2.5 text-sm rounded-none"
+                          id="photo"
+                          type="text"
+                          name="photo"
+                          placeholder="Photo URL"
+                          autoComplete="on"
+                          required
+                        ></input>
+                      </div>
+                    </div>
+                  </div>
 
                   <div>
                     <div className="mb-2">
