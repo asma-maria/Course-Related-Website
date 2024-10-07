@@ -33,7 +33,7 @@ import PrivateRoute from "./PrivateRoute";
           element:<PrivateRoute>
             <Courses></Courses>
           </PrivateRoute>,
-          loader:()=> fetch(`http://localhost:5000/courses`)
+          loader:()=> fetch(`https://course-related-website-server.vercel.app/courses`)
         },
         {
           path:"/courses/:id",
@@ -41,7 +41,7 @@ import PrivateRoute from "./PrivateRoute";
             <CourseDetails></CourseDetails>
           </PrivateRoute>,
           loader:({params})=>
-            fetch(`http://localhost:5000/courses/${params.id}`),
+            fetch(`https://course-related-website-server.vercel.app/courses/${params.id}`),
         },
       ],
 
