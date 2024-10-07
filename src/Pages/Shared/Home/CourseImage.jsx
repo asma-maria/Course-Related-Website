@@ -24,7 +24,8 @@ export const CourseImage = () => {
     {/* Card 2 */}
     <div className="card bg-base-100 shadow-xl bg-cyan-400 ">
       <figure>
-        <img src="https://live.staticflickr.com/65535/52412638962_12e932256a_o.png" alt="Card Image 1" />
+        <img
+         src="https://live.staticflickr.com/65535/52412638962_12e932256a_o.png" alt="Card Image 1" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">Javascript Pro</h2>

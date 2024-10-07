@@ -9,6 +9,7 @@ import image from "../Navbar/download.jpg"
 export default function Navbar() {
 
   const { user, logOut} = useContext(AuthContext);
+
   const navigate = useNavigate();
       const handleSignOut = () => {
         logOut()
@@ -62,6 +63,7 @@ export default function Navbar() {
     </ul>
   </div>
   <div className="navbar-end">
+        {user && <span>{user.displayName}{}</span>}
         
         <div
           tabIndex={0}
@@ -69,7 +71,7 @@ export default function Navbar() {
           className="btn btn-ghost btn-circle avatar mr-3"
         >
           <div className="w-10 rounded-full">
-          <img alt="User" src={userPic} />
+            <img alt="User" src={userPic} />
           </div>
         </div>
 
@@ -82,8 +84,8 @@ export default function Navbar() {
           </button>
         ) : (
           <Link to="/login">
-            <button className="btn btn-sm btn-info text-md rounded-md">
-              Login/SignUp
+            <button className="btn btn-sm btn-info text-md rounded-none">
+              Login
             </button>
           </Link>
         )}

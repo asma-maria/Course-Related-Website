@@ -1,6 +1,7 @@
 import React from 'react'
 import { useLoaderData,useParams,Link } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar';
+import Footer from './Footer';
 
 
 
@@ -10,7 +11,7 @@ export const CourseDetails = () => {
     console.log(courseDetails);
     const { id } = useParams();
     console.log(id);
-    const {_id,title,img_url,ratings,author,author_img_url,duration,details,student,level,lession,price}= courseDetails;
+    const {title,img_url,ratings,author,duration,details,student,level,lession,price}= courseDetails;
 
   return (
 
@@ -30,14 +31,13 @@ export const CourseDetails = () => {
         <p><strong>Total Students:</strong> {student}</p>
         <p><strong>Duration:</strong> {duration}</p>
         <p><strong>Course Fee:</strong> {price}/-</p>
-        
-    
-        
-
         </div>
 
         </div>
 
+    </div>
+    <div>
+      <Footer></Footer>
     </div>
   </div>
   )

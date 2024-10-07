@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import Navbar from "../Shared/Navbar/Navbar";
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import toast from 'react-hot-toast';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+
 
 
 export const Login = () => {
@@ -11,12 +12,15 @@ export const Login = () => {
     const googleProvider=new GoogleAuthProvider();
     const githubProvider=new GithubAuthProvider();
     const navigate=useNavigate();
+    const location=useLocation();
+    console.log("Location page:",location);
+
     const handleLogin=(event)=>{
         event.preventDefault();
-        const form = new FormData(event.currentTarget);
+    const form = new FormData(event.currentTarget);
         console.log(form);
     
-        const email = form.get("email");
+    const email = form.get("email");
         const password = form.get("password");
         console.log(email, password);
     
@@ -26,7 +30,7 @@ export const Login = () => {
             toast.success("User Login Successful", {
               position: "top-right",
             });
-            navigate( "/");
+            navigate(location?.state? location.state : "/courses");
           })
           .catch((error) => {
            console.log(error);
@@ -41,7 +45,7 @@ export const Login = () => {
           toast.success("User Google Login Successful", {
             position: "top-right",
           });
-          navigate("/");
+          navigate(location?.state ? location.state : "/courses");
         })
         .catch((error) => {
           console.log(error);
@@ -55,7 +59,7 @@ export const Login = () => {
           toast.success("User GitHub Login Successful", {
             position: "top-right",
           });
-          navigate("/");
+          navigate(location?.state ? location.state : "/courses");
         })
         .catch((error) => {
           console.log(error);

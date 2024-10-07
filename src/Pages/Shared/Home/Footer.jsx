@@ -76,7 +76,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="mt-12 border-t border-gray-700 pt-8 text-center">
-        <p className="text-sm text-gray-500">&copy; 2024 Your Company Name. All rights reserved.</p>
+        <p className="text-sm text-gray-500">&copy; 2024 Tech Hub. All rights reserved.</p>
       </div>
     </footer>
   );

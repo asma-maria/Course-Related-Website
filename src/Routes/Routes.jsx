@@ -5,7 +5,7 @@ import { Login } from "../Pages/Login/Login";
 import {Register} from "../Pages/Register/Register";
 import { Courses } from "../Pages/Shared/Home/Courses";
 import { CourseDetails } from "../Pages/Shared/Home/CourseDetails";
-import { PrivateRoute } from "./PrivateRoute";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -37,7 +37,9 @@ import { PrivateRoute } from "./PrivateRoute";
         },
         {
           path:"/courses/:id",
-          element:<CourseDetails></CourseDetails>,
+          element:<PrivateRoute>
+            <CourseDetails></CourseDetails>
+          </PrivateRoute>,
           loader:({params})=>
             fetch(`http://localhost:5000/courses/${params.id}`),
         },

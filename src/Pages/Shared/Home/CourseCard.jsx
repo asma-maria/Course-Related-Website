@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 
 const CourseCard = ({course}) => {
@@ -8,9 +9,10 @@ const CourseCard = ({course}) => {
         <div>
   {/* Grid Container with Three Columns */}
   
-  <div className="relative flex flex-col justify-center text-center my-6 bg-white shadow-sm border border-slate-200 rounded-lg ">
-    <div className=" relative h-56 m-2.5 overflow-hidden text-white rounded-md">
-      <img className="object-none" src={img_url} />
+  <div className="relative flex flex-col justify-center text-center my-6 bg-white shadow-sm border
+   border-slate-200 rounded-lg ">
+    <div className=" relative m-2.5 overflow-hidden text-white rounded-md h-96">
+      <img className="object-none object-bottom" src={img_url} />
     </div>
     <div className="p-4">
       <div className="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
@@ -43,9 +45,7 @@ const CourseCard = ({course}) => {
     </div>
   </div> 
 </div>
-
-
-    </div>
+</div>
    
   )
 }
