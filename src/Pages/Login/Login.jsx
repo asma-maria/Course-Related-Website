@@ -4,6 +4,7 @@ import {Link, useLocation, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import toast from 'react-hot-toast';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 
 
@@ -70,6 +71,12 @@ export const Login = () => {
 
 
   return (
+    <>
+    <Helmet>
+      <title>
+      Tech Hub | Login
+      </title>
+    </Helmet>
     <div>
        <Navbar></Navbar>
       <div className="py-8">
@@ -184,5 +191,6 @@ export const Login = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }

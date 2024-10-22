@@ -71,7 +71,7 @@ export default function Navbar() {
           className="btn btn-ghost btn-circle avatar mr-3"
         >
           <div className="w-10 rounded-full">
-            <img alt="User" src={userPic} />
+            <img src={user?.photoURL} className="w-7 rounded-full"></img>
           </div>
         </div>
 

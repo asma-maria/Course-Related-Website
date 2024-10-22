@@ -12,13 +12,14 @@ export  const AuthProvider = ({ children }) => {
   const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const createUser = (email, password) => {
+  const createUser = (email, password,name,photo) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signIn = (email, password) => {
     setLoading(true);
+    
     return signInWithEmailAndPassword(auth, email, password);
   };
 

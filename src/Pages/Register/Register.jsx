@@ -3,6 +3,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import Navbar from '../Shared/Navbar/Navbar'
 import { AuthContext } from '../../Provider/AuthProvider'
 import toast from 'react-hot-toast'
+import { Helmet } from 'react-helmet-async'
 
 
 export const Register = () => {
@@ -47,6 +48,13 @@ export const Register = () => {
         
     }
   return (
+    <>
+    
+    <Helmet>
+      <title>
+      Tech Hub | Register
+      </title>
+    </Helmet>
     <div>
         <Navbar></Navbar>
 
@@ -86,6 +94,12 @@ export const Register = () => {
                       </div>
                     </div>
                   </div>
+                   <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Photo URL</span>
+                                    </label>
+                                    <input type="text" id="photo" name="photo" placeholder="Your photo" className="input input-bordered" required />
+                                </div>
                   <div>
                     <div className="mb-2">
                       <label
@@ -170,5 +184,7 @@ export const Register = () => {
         </div>
       </div>
     </div>
+    </>
+   
   )
 }
